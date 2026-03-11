@@ -1,40 +1,19 @@
 ---
-// Aquí podrías recibir redes sociales o links si quisieras
+// src/components/Header.astro
 ---
-
-<header class="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md z-50 border-b border-gray-100">
-  <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-    
+<header class="fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-6xl z-50">
+  <nav class="bg-white/70 backdrop-blur-xl border border-white/20 shadow-2xl rounded-2xl px-8 py-4 flex justify-between items-center">
     <div class="flex items-center gap-2">
-      <div class="w-8 h-8 bg-yellow-400 rounded-lg flex items-center justify-center font-black text-slate-900">
-        D
+      <div class="w-8 h-8 bg-amber-500 rounded-lg rotate-45 flex items-center justify-center shadow-lg">
+        <span class="text-white font-bold -rotate-45">D</span>
       </div>
-      <span class="text-xl font-bold tracking-tight text-slate-900">
-        Durlock<span class="text-yellow-500">Pro</span>
-      </span>
+      <span class="text-xl font-black tracking-tighter text-zinc-900">STUDIO<span class="text-amber-500">DURLOCK</span></span>
     </div>
-
-    <nav class="hidden md:flex items-center gap-8">
-      <a href="#inicio" class="text-sm font-semibold text-slate-600 hover:text-yellow-500 transition-colors">Inicio</a>
-      <a href="#servicios" class="text-sm font-semibold text-slate-600 hover:text-yellow-500 transition-colors">Servicios</a>
-      <a href="#nosotros" class="text-sm font-semibold text-slate-600 hover:text-yellow-500 transition-colors">Nosotros</a>
-      <a href="#contacto" class="text-sm font-semibold text-slate-600 hover:text-yellow-500 transition-colors">Contacto</a>
-      
-      <a 
-        href="#contacto" 
-        class="bg-slate-900 text-white px-5 py-2.5 rounded-full text-sm font-bold hover:bg-slate-700 transition-all shadow-lg shadow-slate-200"
-      >
-        Pedir Presupuesto
-      </a>
-    </nav>
-
-    <button class="md:hidden p-2 text-slate-900" aria-label="Abrir menú">
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-      </svg>
-    </button>
-
-  </div>
+    <ul class="hidden md:flex gap-10 text-xs font-bold uppercase tracking-widest text-zinc-500">
+      <li><a href="#proyectos" class="hover:text-amber-600 transition">Proyectos</a></li>
+      <li><a href="#nosotros" class="hover:text-amber-600 transition">ADN</a></li>
+      <li><a href="#servicios" class="hover:text-amber-600 transition">Servicios</a></li>
+    </ul>
+    <a href="#contacto" class="bg-zinc-900 text-white px-5 py-2 rounded-xl text-xs font-bold hover:scale-105 transition-transform active:scale-95">CONTACTO</a>
+  </nav>
 </header>
-
-<div class="h-20"></div>

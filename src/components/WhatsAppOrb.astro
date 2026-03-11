@@ -1,0 +1,28 @@
+---
+// src/components/WhatsAppOrb.astro
+const phone = "5491122334455"; // Reemplaza con tu número
+const message = "Hola! Vi su web y me gustaría cotizar un proyecto de Durlock.";
+const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+---
+
+<div class="fixed bottom-8 right-8 z-[100] group">
+  <span class="absolute -top-1 -right-1 flex h-4 w-4 z-[101]">
+    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+    <span class="relative inline-flex rounded-full h-4 w-4 bg-amber-600"></span>
+  </span>
+
+  <a 
+    href={url}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="flex items-center justify-center w-16 h-16 bg-[#25D366] text-white rounded-2xl shadow-[0_20px_50px_rgba(37,211,102,0.4)] hover:scale-110 hover:-rotate-12 transition-all duration-300 group"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 fill-current" viewBox="0 0 24 24">
+        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.417-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.305 1.652zm6.599-3.835c1.511.895 2.994 1.343 4.503 1.343 5.403 0 9.8-4.397 9.802-9.8.001-2.618-1.02-5.08-2.871-6.932-1.851-1.852-4.312-2.873-6.931-2.873-5.404 0-9.802 4.398-9.804 9.802-.001 1.731.458 3.414 1.328 4.887l-1.018 3.714 3.811-1.001z"/>
+    </svg>
+    
+    <span class="absolute right-20 bg-zinc-900 text-white text-[10px] font-bold py-2 px-4 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap uppercase tracking-widest pointer-events-none">
+        ¿Hablamos ahora?
+    </span>
+  </a>
+</div>

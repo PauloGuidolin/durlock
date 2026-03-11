@@ -1,96 +1,128 @@
 ---
-// Importación de Layout base
-import Layout from '../layouts/Layout.astro';
-
-// Importación de Componentes
+// src/pages/index.astro
 import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
-import Features from '../components/Features.astro';
+import About from '../components/About.astro';
+import Services from '../components/Services.astro';
+import Gallery from '../components/Gallery.astro';
 import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
-import WhatsAppButton from '../components/WhatsAppButton.astro';
+import WhatsAppOrb from '../components/WhatsAppOrb.astro';
+import "../styles/global.css";
 
-// Datos Globales (Cámbialos aquí y se actualizarán en toda la web)
-const WHATSAPP_NUMBER = "5491122334455";
-const CLIENT_NAME = "DurlockPro";
+import Testimonials from '../components/Testimonials.astro';
+// Datos para el Marquee (Cinta de correr)
+const tags = [
+  "PRESUPUESTOS SIN CARGO",
+  "NIVEL 5 FINISH",
+  "CONSTRUCCIÓN EN SECO",
+  "GARANTÍA ESCRITA",
+  "MAESTROS DEL DURLOCK",
+  "AISLACIÓN ACÚSTICA",
+];
 ---
 
-<Layout title={`${CLIENT_NAME} | Expertos en Construcción en Seco`}>
-	
-	<Header />
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>STUDIO DURLOCK | Arquitectura en Seco Premium</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  </head>
+  
+  <body class="bg-white font-['Space_Grotesk'] antialiased text-zinc-900 selection:bg-amber-500 selection:text-white">
+    
+    <WhatsAppOrb />
 
-	<main>
-		<section id="inicio">
-			<Hero phone={WHATSAPP_NUMBER} />
-		</section>
+    <Header />
+    
+    <main>
+      <Hero />
 
-		<section id="servicios">
-			<Features />
-		</section>
+      <section class="bg-amber-500 py-6 border-y-2 border-zinc-900 overflow-hidden relative z-20">
+        <div class="flex whitespace-nowrap animate-marquee">
+          {Array(4).fill(0).map(() => (
+            <div class="flex gap-12 items-center mx-6">
+              {tags.map((tag) => (
+                <span class="text-zinc-900 font-black text-xl md:text-2xl uppercase tracking-tighter flex items-center gap-4">
+                  <span class="w-3 h-3 bg-zinc-900 rotate-45"></span>
+                  {tag}
+                </span>
+              ))}
+            </div>
+          ))}
+        </div>
+      </section>
 
-		<section id="nosotros" class="py-24 bg-white overflow-hidden">
-			<div class="max-w-6xl mx-auto px-6">
-				<div class="flex flex-col md:flex-row items-center gap-16">
-					<div class="w-full md:w-1/2 relative">
-						<div class="absolute -top-4 -left-4 w-24 h-24 bg-yellow-400 rounded-full mix-blend-multiply opacity-20 animate-pulse"></div>
-						<img 
-							src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=800" 
-							alt="Trabajador de construcción" 
-							class="rounded-3xl shadow-2xl relative z-10"
-						/>
-					</div>
-					<div class="w-full md:w-1/2">
-						<h2 class="text-4xl font-black text-slate-900 mb-6 leading-tight">
-							Más de 10 años <br/> 
-							<span class="text-yellow-500 underline decoration-slate-900 underline-offset-8">creando espacios</span>
-						</h2>
-						<p class="text-gray-600 text-lg leading-relaxed mb-6">
-							En <strong>{CLIENT_NAME}</strong> no solo colocamos placas; diseñamos soluciones térmicas, acústicas y estéticas para tu hogar u oficina. 
-						</p>
-						<div class="grid grid-cols-2 gap-6 pt-6 border-t border-gray-100">
-							<div>
-								<p class="text-3xl font-black text-slate-900">150+</p>
-								<p class="text-sm text-gray-500 uppercase tracking-widest font-bold">Obras Finalizadas</p>
-							</div>
-							<div>
-								<p class="text-3xl font-black text-slate-900">100%</p>
-								<p class="text-sm text-gray-500 uppercase tracking-widest font-bold">Garantizado</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
+      <About />
 
-		<section id="contacto">
-			<Contact />
-		</section>
-	</main>
+      <Services />
 
-	<Footer />
+      <div class="py-10 bg-zinc-900">
+          <div class="container mx-auto px-6">
+              <h2 class="text-white text-4xl font-black mb-12">PORTAFOLIO <span class="text-amber-500">REAL.</span></h2>
+          </div>
+          <Gallery />
+      </div>
 
-	<WhatsAppButton phone={WHATSAPP_NUMBER} />
+     <Testimonials/>
 
-</Layout>
+      <Contact />
+    </main>
 
-<style is:global>
-	/* Smooth scroll para que los links del header no salten de golpe */
-	html {
-		scroll-behavior: smooth;
-	}
+    <Footer />
 
-	/* Estilo para las barras de scroll */
-	::-webkit-scrollbar {
-		width: 10px;
-	}
-	::-webkit-scrollbar-track {
-		background: #f1f1f1;
-	}
-	::-webkit-scrollbar-thumb {
-		background: #cbd5e1;
-		border-radius: 5px;
-	}
-	::-webkit-scrollbar-thumb:hover {
-		background: #94a3b8;
-	}
-</style>
+    <style is:global>
+      /* Animación del Marquee */
+      @keyframes marquee {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+      .animate-marquee {
+        display: flex;
+        width: max-content;
+        animation: marquee 40s linear infinite;
+      }
+      .animate-marquee:hover {
+        animation-play-state: paused;
+      }
+
+      /* Estética de scrollbar personalizada */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #18181b;
+        border-radius: 5px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #f59e0b;
+      }
+
+      /* Evitar desbordamiento horizontal */
+      body, html {
+        max-width: 100vw;
+        overflow-x: hidden;
+      }
+    </style>
+
+    <script>
+      // Script opcional: Vibración del botón de WhatsApp para llamar la atención
+      const waButton = document.querySelector('.fixed.bottom-8.right-8');
+      if (waButton) {
+        setInterval(() => {
+          waButton.classList.add('animate-bounce');
+          setTimeout(() => waButton.classList.remove('animate-bounce'), 2000);
+        }, 15000);
+      }
+    </script>
+  </body>
+</html>

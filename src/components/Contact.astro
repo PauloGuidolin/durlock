@@ -1,93 +1,22 @@
 ---
-// Puedes cambiar estos datos fácilmente
-const phone = "5491122334455";
-const location = "CABA y alrededores, Buenos Aires";
+// src/components/Contact.astro
 ---
-
-<section id="contacto" class="py-24 bg-slate-50">
-  <div class="max-w-6xl mx-auto px-6">
-    <div class="text-center mb-16">
-      <h2 class="text-4xl font-extrabold text-slate-900 mb-4">Presupuesto sin cargo</h2>
-      <p class="text-gray-600 max-w-xl mx-auto">
-        Completá el formulario y nos pondremos en contacto con vos en menos de 24 horas para asesorarte.
-      </p>
-    </div>
-
-    <div class="grid lg:grid-cols-2 gap-12 items-stretch">
-      
-      <div class="bg-white p-8 md:p-10 rounded-3xl shadow-sm border border-slate-100">
-        <form action="#" method="POST" class="space-y-6">
-          <div class="grid md:grid-cols-2 gap-6">
-            <div>
-              <label for="name" class="block text-sm font-semibold text-slate-700 mb-2">Nombre</label>
-              <input type="text" id="name" name="name" required
-                class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-4 focus:ring-yellow-400/20 focus:border-yellow-400 outline-none transition-all"
-                placeholder="Juan Pérez">
-            </div>
-            <div>
-              <label for="whatsapp" class="block text-sm font-semibold text-slate-700 mb-2">WhatsApp / Tel</label>
-              <input type="tel" id="whatsapp" name="whatsapp" required
-                class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-4 focus:ring-yellow-400/20 focus:border-yellow-400 outline-none transition-all"
-                placeholder="11 2233 4455">
-            </div>
-          </div>
-
-          <div>
-            <label for="service" class="block text-sm font-semibold text-slate-700 mb-2">Tipo de trabajo</label>
-            <select id="service" name="service" 
-              class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-4 focus:ring-yellow-400/20 focus:border-yellow-400 outline-none transition-all appearance-none bg-white">
-              <option>Cielorraso</option>
-              <option>Tabiquería / Paredes</option>
-              <option>Muebles de Durlock</option>
-              <option>Otro / Consulta general</option>
-            </select>
-          </div>
-
-          <div>
-            <label for="message" class="block text-sm font-semibold text-slate-700 mb-2">Contanos un poco más</label>
-            <textarea id="message" name="message" rows="4" required
-              class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-4 focus:ring-yellow-400/20 focus:border-yellow-400 outline-none transition-all"
-              placeholder="Ej: Necesito hacer un tabique de 3 metros con puerta..."></textarea>
-          </div>
-
-          <button type="submit" 
-            class="w-full bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-black py-4 rounded-xl shadow-lg shadow-yellow-200 transition-all transform hover:scale-[1.02] active:scale-95 uppercase tracking-wider text-sm">
-            Enviar Solicitud
-          </button>
-        </form>
-      </div>
-
-      <div class="flex flex-col gap-6">
-        <div class="bg-slate-900 text-white p-8 rounded-3xl flex-1 relative overflow-hidden">
-          <div class="absolute top-0 right-0 w-32 h-32 bg-yellow-400/10 rounded-full translate-x-16 -translate-y-16"></div>
-          
-          <h3 class="text-2xl font-bold mb-6 italic text-yellow-400">¿Dónde trabajamos?</h3>
-          <p class="mb-8 text-slate-300">Cubrimos toda la zona de <strong>{location}</strong>. Llevamos nuestras herramientas y materiales al lugar de la obra.</p>
-          
-          <div class="space-y-6">
-            <div class="flex items-center gap-4">
-              <div class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center text-yellow-400">📍</div>
-              <span class="text-sm font-medium">Atención a domicilio y obras</span>
-            </div>
-            <div class="flex items-center gap-4">
-              <div class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center text-yellow-400">💬</div>
-              <span class="text-sm font-medium">Respuesta rápida por WhatsApp</span>
-            </div>
-          </div>
-
-          <div class="mt-8 h-48 md:h-64 bg-slate-800 rounded-2xl overflow-hidden border border-slate-700">
-             <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d105073.239445832!2d-58.5213752441!3d-34.61582377!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcca3b4ef90bd5%3A0x107a29460f413f03!2sBuenos%20Aires%2C%20CABA!5e0!3m2!1ses!2sar!4v1700000000000!5m2!1ses!2sar" 
-                class="w-full h-full grayscale opacity-80 contrast-125" 
-                style="border:0;" 
-                allowfullscreen="" 
-                loading="lazy" 
-                referrerpolicy="no-referrer-when-downgrade">
-             </iframe>
-          </div>
+<section id="contacto" class="py-24 relative bg-white">
+  <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 relative z-10">
+    <div class="bg-zinc-900 p-10 md:p-16 rounded-[40px] text-white shadow-2xl">
+      <h2 class="text-4xl font-bold mb-8 italic">¿Cotizamos <br/> tu idea?</h2>
+      <form class="space-y-8">
+        <div class="group relative">
+            <input type="text" class="w-full bg-transparent border-b border-zinc-700 py-2 focus:outline-none focus:border-amber-500 transition-colors" placeholder="Nombre completo" />
         </div>
-      </div>
-
+        <div class="group relative">
+            <input type="email" class="w-full bg-transparent border-b border-zinc-700 py-2 focus:outline-none focus:border-amber-500 transition-colors" placeholder="Email de contacto" />
+        </div>
+        <button class="w-full py-4 bg-amber-500 text-zinc-900 font-black uppercase tracking-[0.2em] rounded-full hover:bg-white transition-colors duration-500">Enviar Solicitud</button>
+      </form>
+    </div>
+    <div class="rounded-[40px] overflow-hidden grayscale border border-zinc-200 h-[500px]">
+       <iframe src="https://www.google.com/maps/embed?..." class="w-full h-full object-cover"></iframe>
     </div>
   </div>
 </section>
