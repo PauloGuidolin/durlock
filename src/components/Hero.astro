@@ -1,0 +1,17 @@
+---
+// src/components/Hero.astro
+const { phone } = Astro.props;
+---
+<section class="bg-slate-900 text-white py-24 px-6 text-center relative overflow-hidden">
+  <div class="relative z-10">
+    <h1 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight">
+      Muros que <span class="text-yellow-400">Transforman</span>
+    </h1>
+    <p class="text-xl mb-10 text-gray-400 max-w-2xl mx-auto">
+      Expertos en Durlock: Cielorrasos, tabiquería y diseños a medida con acabado profesional.
+    </p>
+    <a href={`https://wa.me/${phone}`} class="bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold py-4 px-10 rounded-lg transition-all transform hover:scale-105 shadow-xl">
+      Cotizar mi proyecto
+    </a>
+  </div>
+</section>

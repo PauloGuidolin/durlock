@@ -1,11 +1,96 @@
 ---
-import Welcome from '../components/Welcome.astro';
+// Importación de Layout base
 import Layout from '../layouts/Layout.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// Importación de Componentes
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Features from '../components/Features.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+
+// Datos Globales (Cámbialos aquí y se actualizarán en toda la web)
+const WHATSAPP_NUMBER = "5491122334455";
+const CLIENT_NAME = "DurlockPro";
 ---
 
-<Layout>
-	<Welcome />
+<Layout title={`${CLIENT_NAME} | Expertos en Construcción en Seco`}>
+	
+	<Header />
+
+	<main>
+		<section id="inicio">
+			<Hero phone={WHATSAPP_NUMBER} />
+		</section>
+
+		<section id="servicios">
+			<Features />
+		</section>
+
+		<section id="nosotros" class="py-24 bg-white overflow-hidden">
+			<div class="max-w-6xl mx-auto px-6">
+				<div class="flex flex-col md:flex-row items-center gap-16">
+					<div class="w-full md:w-1/2 relative">
+						<div class="absolute -top-4 -left-4 w-24 h-24 bg-yellow-400 rounded-full mix-blend-multiply opacity-20 animate-pulse"></div>
+						<img 
+							src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=800" 
+							alt="Trabajador de construcción" 
+							class="rounded-3xl shadow-2xl relative z-10"
+						/>
+					</div>
+					<div class="w-full md:w-1/2">
+						<h2 class="text-4xl font-black text-slate-900 mb-6 leading-tight">
+							Más de 10 años <br/> 
+							<span class="text-yellow-500 underline decoration-slate-900 underline-offset-8">creando espacios</span>
+						</h2>
+						<p class="text-gray-600 text-lg leading-relaxed mb-6">
+							En <strong>{CLIENT_NAME}</strong> no solo colocamos placas; diseñamos soluciones térmicas, acústicas y estéticas para tu hogar u oficina. 
+						</p>
+						<div class="grid grid-cols-2 gap-6 pt-6 border-t border-gray-100">
+							<div>
+								<p class="text-3xl font-black text-slate-900">150+</p>
+								<p class="text-sm text-gray-500 uppercase tracking-widest font-bold">Obras Finalizadas</p>
+							</div>
+							<div>
+								<p class="text-3xl font-black text-slate-900">100%</p>
+								<p class="text-sm text-gray-500 uppercase tracking-widest font-bold">Garantizado</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="contacto">
+			<Contact />
+		</section>
+	</main>
+
+	<Footer />
+
+	<WhatsAppButton phone={WHATSAPP_NUMBER} />
+
 </Layout>
+
+<style is:global>
+	/* Smooth scroll para que los links del header no salten de golpe */
+	html {
+		scroll-behavior: smooth;
+	}
+
+	/* Estilo para las barras de scroll */
+	::-webkit-scrollbar {
+		width: 10px;
+	}
+	::-webkit-scrollbar-track {
+		background: #f1f1f1;
+	}
+	::-webkit-scrollbar-thumb {
+		background: #cbd5e1;
+		border-radius: 5px;
+	}
+	::-webkit-scrollbar-thumb:hover {
+		background: #94a3b8;
+	}
+</style>
