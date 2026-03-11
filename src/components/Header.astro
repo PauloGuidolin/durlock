@@ -1,19 +1,56 @@
 ---
 // src/components/Header.astro
+const waUrl = "https://wa.me/tu_numero";
 ---
-<header class="fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-6xl z-50">
-  <nav class="bg-white/70 backdrop-blur-xl border border-white/20 shadow-2xl rounded-2xl px-8 py-4 flex justify-between items-center">
-    <div class="flex items-center gap-2">
-      <div class="w-8 h-8 bg-amber-500 rounded-lg rotate-45 flex items-center justify-center shadow-lg">
-        <span class="text-white font-bold -rotate-45">D</span>
+<header class="fixed top-0 left-0 w-full z-[100] bg-white/90 backdrop-blur-md border-b border-zinc-100">
+  <div class="container mx-auto px-6">
+    <div class="flex justify-between items-center h-20 md:h-24">
+      
+      <a href="/" class="flex items-center gap-3 group">
+        <div class="relative w-10 h-10 bg-zinc-900 flex items-center justify-center overflow-hidden transition-transform group-hover:rotate-90 duration-500">
+            <span class="text-white font-black text-xl relative z-10">D</span>
+            <div class="absolute bottom-0 right-0 w-4 h-4 bg-amber-500"></div>
+        </div>
+        <div class="flex flex-col">
+            <span class="text-xl font-black tracking-tighter leading-none text-zinc-900">STUDIO<span class="text-amber-500">DRYKON</span></span>
+            <span class="text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-400">High End Drywall</span>
+        </div>
+      </a>
+
+      <nav class="hidden md:block">
+        <ul class="flex gap-12">
+          {['Servicios', 'Nosotros', 'Portafolio', 'Reseñas'].map((item) => (
+            <li>
+              <a 
+                href={`#${item.toLowerCase()}`} 
+                class="text-xs font-black uppercase tracking-[0.2em] text-zinc-500 hover:text-amber-500 transition-colors relative group"
+              >
+                {item}
+                <span class="absolute -bottom-2 left-0 w-0 h-0.5 bg-amber-500 transition-all group-hover:w-full"></span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <div class="flex items-center gap-4">
+        <a 
+          href={waUrl} 
+          class="hidden sm:flex items-center gap-2 bg-zinc-900 text-white px-6 py-3 text-xs font-black uppercase tracking-widest hover:bg-amber-500 transition-all duration-300 shadow-lg shadow-zinc-200"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.417-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.305 1.652zm6.599-3.835c1.511.895 2.994 1.343 4.503 1.343 5.403 0 9.8-4.397 9.802-9.8.001-2.618-1.02-5.08-2.871-6.932-1.851-1.852-4.312-2.873-6.931-2.873-5.404 0-9.802 4.398-9.804 9.802-.001 1.731.458 3.414 1.328 4.887l-1.018 3.714 3.811-1.001z"/>
+          </svg>
+          Cotizar Hoy
+        </a>
+        
+        <button class="md:hidden p-2 text-zinc-900">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16" />
+          </svg>
+        </button>
       </div>
-      <span class="text-xl font-black tracking-tighter text-zinc-900">STUDIO<span class="text-amber-500">DURLOCK</span></span>
+
     </div>
-    <ul class="hidden md:flex gap-10 text-xs font-bold uppercase tracking-widest text-zinc-500">
-      <li><a href="#proyectos" class="hover:text-amber-600 transition">Proyectos</a></li>
-      <li><a href="#nosotros" class="hover:text-amber-600 transition">ADN</a></li>
-      <li><a href="#servicios" class="hover:text-amber-600 transition">Servicios</a></li>
-    </ul>
-    <a href="#contacto" class="bg-zinc-900 text-white px-5 py-2 rounded-xl text-xs font-bold hover:scale-105 transition-transform active:scale-95">CONTACTO</a>
-  </nav>
+  </div>
 </header>
